@@ -20,7 +20,7 @@ slash.handle("covid", async (d: slash.ApplicationCommandInteraction) => {
     renderType: "jpeg",
     selector: ".card-content"
   })
-  const req = await fetch(`https://PhantomJScloud.com/api/browser/v2/${Deno.env.get("PHANTOM_KEY")}`, {
+  const req = await fetch(`https://PhantomJScloud.com/api/browser/v2/${Deno.env.get("PHANTOM_KEY")}/`, {
     method: "POST",
     body: body
   })
