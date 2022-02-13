@@ -23,8 +23,8 @@ slash.handle("covid", async (d: slash.ApplicationCommandInteraction) => {
   const req = await fetch(`https://PhantomJScloud.com/api/browser/v2/${Deno.env.get("PHANTOM_KEY")}`, {
     method: "POST"
   })
-  const res = await req.blob()
-  const att = new slash.MessageAttachment("covid.png", res)
+  const b = await req.text()
+  const att = new slash.MessageAttachment("covid.png", b)
   d.respond({content: "covid", files: [att]})
 })
 
