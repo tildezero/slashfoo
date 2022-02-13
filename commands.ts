@@ -11,13 +11,13 @@ export const commands: deploy.ApplicationCommandPartial[] = [
         description: "adds two numbers",
         options: [
             {
-                name: "number1",
+                name: "n1",
                 description: "the first number",
                 type: "INTEGER",
                 required: true
             },
             {
-                name: "number2",
+                name: "n1",
                 description: "the second number",
                 type: "INTEGER",
                 required: true
