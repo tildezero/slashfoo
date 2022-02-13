@@ -1,29 +1,17 @@
-import * as deploy from "https://code.harmony.rocks/v2.5.1/deploy.ts"
+import * as slash from "https://code.harmony.rocks/v2.5.1/deploy.ts"
+import { commands } from "./commands.ts"
 
-deploy.init({ env: true })
+slash.init({ env: true })
 
-const commands = await deploy.commands.all()
-if (commands.size !== 1) {
-  deploy.commands.bulkEdit([
-    {
-      name: 'ping',
-      description: "It's literally ping command. What did you expect?",
-      options: [
-        {
-          name: 'pingarg',
-          description: 'Again literally pingArg',
-          required: false,
-          type: deploy.ApplicationCommandOptionType.STRING
-        }
-      ]
-    }
-  ])
+const cmds = await slash.commands.all()
+if (cmds.size !== commands.length) {
+  slash.commands.bulkEdit(commands)
 }
 
-deploy.handle('ping', (d) => {
-  console.log("/ping command ran")
-  const arg = d.option<string | undefined>('pingarg')
-  d.reply(`Pong! You typed: ${arg !== undefined ? arg : 'nothing'}`)
+slash.handle('ping', (d: slash.ApplicationCommandInteraction) => d.reply("pong"))
+
+slash.handle("add", (d: slash.ApplicationCommandInteraction) => {
+  d.reply(`${d.option<number>("number1") + d.option<number>("number2")}`)
 })
 
 console.log("bot running")
