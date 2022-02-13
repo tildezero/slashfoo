@@ -15,4 +15,18 @@ slash.handle("add", (d: slash.ApplicationCommandInteraction) => {
   d.reply(`${d.option<number>("n1") + d.option<number>("n2")}`)
 })
 
+slash.handle("covid", async (d: slash.ApplicationCommandInteraction) => {
+  const body = JSON.stringify({
+    url: "https://view-awesome-table.com/-MGy-B0VX5sZp1jdKNqb/view?filterA=Round%20Rock%20High",
+    renderType: "png",
+    selector: ".card-content"
+  })
+  const req = await fetch(`https://PhantomJScloud.com/api/browser/v2/${Deno.env.get("PHANTOM_KEY")}`, {
+    method: "POST"
+  })
+  const res = await req.blob()
+  const att = new slash.MessageAttachment("covid.png", res)
+  d.respond({content: "covid", files: [att]})
+})
+
 console.log("bot running")
