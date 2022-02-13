@@ -24,6 +24,7 @@ slash.handle("covid", async (d: slash.ApplicationCommandInteraction) => {
     method: "POST"
   })
   const b = await req.text()
+  console.log(b)
   const att = new slash.MessageAttachment("covid.png", b)
   d.respond({content: "covid", files: [att]})
 })
