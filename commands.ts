@@ -17,7 +17,7 @@ export const commands: deploy.ApplicationCommandPartial[] = [
                 required: true
             },
             {
-                name: "n1",
+                name: "n2",
                 description: "the second number",
                 type: "INTEGER",
                 required: true
@@ -25,6 +25,7 @@ export const commands: deploy.ApplicationCommandPartial[] = [
         ]
     },
     {
-        name: "covid"
+        name: "covid",
+        description: "covid"
     }
 ]
