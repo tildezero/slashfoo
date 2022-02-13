@@ -21,6 +21,7 @@ if (commands.size !== 1) {
 }
 
 deploy.handle('ping', (d) => {
+  console.log("/ping command ran")
   const arg = d.option<string | undefined>('pingarg')
   d.reply(`Pong! You typed: ${arg !== undefined ? arg : 'nothing'}`)
 })
