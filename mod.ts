@@ -26,7 +26,7 @@ slash.handle("covid", async (d: slash.ApplicationCommandInteraction) => {
   })
   const b = await req.blob()
   const t = await b.text()
-  const att = new slash.MessageAttachment("covid.jpg", b)
+  const att = new slash.MessageAttachment("covid.jpg", t)
   d.respond({content: "covid", files: [att]})
 })
 
