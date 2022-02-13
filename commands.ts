@@ -23,5 +23,8 @@ export const commands: deploy.ApplicationCommandPartial[] = [
                 required: true
             }
         ]
+    },
+    {
+        name: "covid"
     }
 ]
