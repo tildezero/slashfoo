@@ -21,9 +21,9 @@ slash.handle("covid", async (d: slash.ApplicationCommandInteraction) => {
     selector: ".card-content"
   })
   const req = await fetch(`https://PhantomJScloud.com/api/browser/v2/${Deno.env.get("PHANTOM_KEY")}`, {
-    method: "POST"
+    method: "POST",
+    body: body
   })
-  const b = await req.text()
   console.log(b)
   const att = new slash.MessageAttachment("covid.png", b)
   d.respond({content: "covid", files: [att]})
