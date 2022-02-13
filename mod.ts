@@ -24,9 +24,10 @@ slash.handle("covid", async (d: slash.ApplicationCommandInteraction) => {
     method: "POST",
     body: body
   })
-  console.log(b)
+  const b = await req.text()
+  d.defer(false)
   const att = new slash.MessageAttachment("covid.png", b)
-  d.respond({content: "covid", files: [att]})
+  d.editResponse({content: "covid", files: [att]})
 })
 
 console.log("bot running")
