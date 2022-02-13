@@ -4,7 +4,6 @@ import { commands } from "./commands.ts"
 slash.init({ env: true })
 
 const cmds = await slash.commands.all()
-console.log(cmds)
 if (cmds.size !== commands.length) {
   slash.commands.bulkEdit(commands)
 }
