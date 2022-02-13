@@ -17,16 +17,16 @@ slash.handle("add", (d: slash.ApplicationCommandInteraction) => {
 slash.handle("covid", async (d: slash.ApplicationCommandInteraction) => {
   const body = JSON.stringify({
     url: "https://view-awesome-table.com/-MGy-B0VX5sZp1jdKNqb/view?filterA=Round%20Rock%20High",
-    renderType: "png",
+    renderType: "jpeg",
     selector: ".card-content"
   })
   const req = await fetch(`https://PhantomJScloud.com/api/browser/v2/${Deno.env.get("PHANTOM_KEY")}`, {
     method: "POST",
     body: body
   })
-  const b = await req.text()
+  const b = await req.blob()
   d.defer(false)
-  const att = new slash.MessageAttachment("covid.png", b)
+  const att = new slash.MessageAttachment("covid.jpg", b)
   d.editResponse({content: "covid", files: [att]})
 })
 
