@@ -24,8 +24,9 @@ slash.handle("urban", async (d: slash.ApplicationCommandInteraction) => {
 slash.handle("covid", async (d: slash.ApplicationCommandInteraction) => {
     const i = await d.defer()
     const req = await fetch("https://covid-ss.vercel.app")
-    const img = await req.blob()
-    const att = new slash.MessageAttachment("covid.png", img)
+    const img = await req.arrayBuffer()
+    const bytes = new Uint8Array(img)
+    const att = new slash.MessageAttachment("covid.png", bytes, "a picture with things in it")
     await i.editResponse({ files: [att] })
 
 })
