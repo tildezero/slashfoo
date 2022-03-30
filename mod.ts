@@ -14,6 +14,13 @@ slash.handle("add", (d: slash.ApplicationCommandInteraction) => {
   d.reply(`${d.option<number>("n1") + d.option<number>("n2")}`)
 })
 
+slash.handle("urban", async (d: slash.ApplicationCommandInteraction) => {
+    const q = encodeURIComponent(d.option<string>("word"))
+    const req = await fetch(`https://api.urbandictionary.com/v0/define?term=${q}`)
+    const res = await req.json()
+    d.reply(res.list[0].definition)
+})
+
 slash.handle("covid", async (d: slash.ApplicationCommandInteraction) => {
   const body = JSON.stringify({
     url: "https://view-awesome-table.com/-MGy-B0VX5sZp1jdKNqb/view?filterA=Round%20Rock%20High",

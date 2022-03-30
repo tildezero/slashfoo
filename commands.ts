@@ -7,6 +7,18 @@ export const commands: deploy.ApplicationCommandPartial[] = [
         description: "pongs",
     },
     {
+        name: "urban",
+        description: "urban dictionary",
+        options: [
+            {
+                name: "word",
+                description: "the word",
+                type: "STRING",
+                required: true
+            }
+        ] 
+    },
+    {
         name: "add",
         description: "adds two numbers",
         options: [
