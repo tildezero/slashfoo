@@ -38,3 +38,6 @@ slash.handle("covid", async (d: slash.ApplicationCommandInteraction) => {
 })
 
 console.log("bot running")
+const c = await slash.commands.all()
+console.log('-- commands --')
+c.forEach(cmd => console.log(cmd.name))
