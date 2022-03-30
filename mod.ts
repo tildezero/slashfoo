@@ -22,22 +22,14 @@ slash.handle("urban", async (d: slash.ApplicationCommandInteraction) => {
 })
 
 slash.handle("covid", async (d: slash.ApplicationCommandInteraction) => {
-  const body = JSON.stringify({
-    url: "https://view-awesome-table.com/-MGy-B0VX5sZp1jdKNqb/view?filterA=Round%20Rock%20High",
-    renderType: "jpeg",
-    selector: ".card-content"
-  })
-  const req = await fetch(`https://PhantomJScloud.com/api/browser/v2/${Deno.env.get("PHANTOM_KEY")}/`, {
-    method: "POST",
-    body: body
-  })
-  const b = await req.blob()
-  const t = await b.text()
-  const att = new slash.MessageAttachment("covid.jpg", t)
-  d.respond({content: "covid", files: [att]})
+    const i = await d.defer()
+    const req = await fetch("https://covid-ss.vercel.app")
+    const img = await req.blob()
+    const att = new slash.MessageAttachment("covid.png", img)
+    await i.editResponse({ files: [att] })
+
 })
 
 console.log("bot running")
-const c = await slash.commands.all()
 console.log('-- commands --')
-c.forEach(cmd => console.log(cmd.name))
+cmds.forEach(cmd => console.log(cmd.name))
