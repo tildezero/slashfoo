@@ -12,8 +12,7 @@ export const commands: deploy.ApplicationCommandPartial[] = [
                 type: "STRING",
                 required: true
             }
-        ],
-        type: "MESSAGE"
+        ]
     },
     {
         name: "ping",
