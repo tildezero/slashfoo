@@ -26,10 +26,15 @@ slash.handle("suggest", async (d: slash.ApplicationCommandInteraction) => {
     })
     const cl = new Client({token: Deno.env.get("TOKEN")})
     const msg: Message = await cl.channels.sendMessage("735619559318487123", {embeds: [em]})
-    // await msg.startThread({name: "discuss", autoArchiveDuration: 10080})
-    await msg.addReaction("👍");
-    await msg.addReaction("👎");
-    await d.reply("done!")
+    try {
+        await msg.startThread({name: "discuss", autoArchiveDuration: 10080})
+        await msg.addReaction("👍");
+        await msg.addReaction("👎");
+        await d.reply("done!")
+    } catch (e) {
+        await d.reply(`error: ${e}`)
+    }
+    
 })
 
 slash.handle("urban", async (d: slash.ApplicationCommandInteraction) => {
