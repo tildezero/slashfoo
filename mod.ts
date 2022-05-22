@@ -1,4 +1,5 @@
 import * as slash from "https://code.harmony.rocks/v2.5.1/deploy.ts"
+import { Client } from "https://code.harmony.rocks/v2.5.1/mod.ts"
 import { commands } from "./commands.ts"
 
 slash.init({ env: true })
@@ -23,7 +24,8 @@ slash.handle("suggest", async (d: slash.ApplicationCommandInteraction) => {
         name: `${d.user.toString()} (${d.member?.nick})`,
         icon_url: d.user.avatarURL() 
     })
-    const msg = await slash.client.client?.channels.sendMessage("735619559318487123", {embeds: [em]})
+    const cl = new Client({token: Deno.env.get("TOKEN")})
+    const msg = await cl.channels.sendMessage("735619559318487123", {embeds: [em]})
     await msg?.startThread({name: "discuss", autoArchiveDuration: 10080})
     await msg?.addReaction("👍");
     await msg?.addReaction("👎");
