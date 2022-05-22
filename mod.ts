@@ -15,7 +15,6 @@ slash.handle("add", (d: slash.ApplicationCommandInteraction) => {
 
 slash.handle("suggest", async (d: slash.ApplicationCommandInteraction) => {
     if (d.guild?.id !== "733508936216477706") return d.reply("no");
-    console.log("checkpoint 1")
     const em = new slash.Embed({
         title: "Suggestion", 
         description: d.option<string>("suggestion")
