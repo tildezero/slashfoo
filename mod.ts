@@ -21,14 +21,14 @@ slash.handle("suggest", async (d: slash.ApplicationCommandInteraction) => {
         description: d.option<string>("suggestion")
     })
     em.setAuthor({
-        name: `${d.user.toString()} (${d.member?.nick})`,
+        name: `${d.user.username}#${d.user.discriminator} (${d.member?.nick})`,
         icon_url: d.user.avatarURL() 
     })
     const cl = new Client({token: Deno.env.get("TOKEN")})
     const msg = await cl.channels.sendMessage("735619559318487123", {embeds: [em]})
-    await msg?.startThread({name: "discuss", autoArchiveDuration: 10080})
-    await msg?.addReaction("👍");
-    await msg?.addReaction("👎");
+    await msg.startThread({name: "discuss", autoArchiveDuration: 10080})
+    await msg.addReaction("👍");
+    await msg.addReaction("👎");
     await d.reply("done!")
 })
 
