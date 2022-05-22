@@ -3,6 +3,19 @@ import * as deploy from "https://code.harmony.rocks/v2.5.1/deploy.ts"
 
 export const commands: deploy.ApplicationCommandPartial[] = [
     {
+        name: "suggest",
+        description: "make a server suggestion",
+        options: [
+            {
+                name: "suggestion",
+                description: "put your suggestion here",
+                type: "STRING",
+                required: true
+            }
+        ],
+        type: "MESSAGE"
+    },
+    {
         name: "ping",
         description: "pongs",
     },

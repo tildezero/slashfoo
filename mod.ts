@@ -14,6 +14,24 @@ slash.handle("add", (d: slash.ApplicationCommandInteraction) => {
   d.reply(`${d.option<number>("n1") + d.option<number>("n2")}`)
 })
 
+slash.handle("suggest", async (d: slash.ApplicationCommandInteraction) => {
+    if (d.guild?.id !== "733508936216477706") return d.reply("no")
+    const em = new slash.Embed({
+        title: "Suggestion", 
+        description: d.option<string>("suggestion")
+    })
+    em.setAuthor({
+        name: `${d.user.toString()} (${d.member?.nick})`,
+        icon_url: d.user.avatarURL() 
+    })
+    // const gd = await slash.client.client?.guilds.fetch("733508936216477706")
+    // const ch = await gd?.channels.get("735619559318487123")
+    const msg = await slash.client.client?.channels.sendMessage("735619559318487123", {embeds: [em]})
+    await msg?.startThread({name: "discuss", autoArchiveDuration: 10080})
+    await msg?.addReaction("👍");
+    await msg?.addReaction("👎");
+})
+
 slash.handle("urban", async (d: slash.ApplicationCommandInteraction) => {
     const q = encodeURIComponent(d.option<string>("word"))
     const req = await fetch(`https://api.urbandictionary.com/v0/define?term=${q}`)
