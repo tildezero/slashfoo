@@ -32,7 +32,7 @@ slash.handle("suggest", async (d: slash.ApplicationCommandInteraction) => {
         await msg.addReaction("👎");
         await d.reply("done!")
     } catch (e) {
-        await d.reply(`error: ${e}`)
+        await d.reply(`error: ${e.stack}`)
     }
     
 })
