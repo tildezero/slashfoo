@@ -27,14 +27,10 @@ slash.handle("suggest", async (d: slash.ApplicationCommandInteraction) => {
     const cl = new Client({token: Deno.env.get("TOKEN")})
     const ch = await cl.channels.resolve("735619559318487123")
     const msg: Message = await (ch as GuildTextChannel).send({embeds: [em]})
-    try {
         await (ch as GuildTextChannel).startThread({name: "discuss", autoArchiveDuration: 10080}, msg)
         await msg.addReaction("👍");
         await msg.addReaction("👎");
         await d.reply("done!")
-    } catch (e) {
-        await d.reply(`error: ${e.stack}`)
-    }
     
 })
 
