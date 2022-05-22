@@ -20,22 +20,15 @@ slash.handle("suggest", async (d: slash.ApplicationCommandInteraction) => {
         title: "Suggestion", 
         description: d.option<string>("suggestion")
     })
-    console.log("2")
     em.setAuthor({
         name: `${d.user.toString()} (${d.member?.nick})`,
         icon_url: d.user.avatarURL() 
     })
-    console.log("3")
     const msg = await slash.client.client?.channels.sendMessage("735619559318487123", {embeds: [em]})
-    console.log("4")
     await msg?.startThread({name: "discuss", autoArchiveDuration: 10080})
-    console.log("5")
-   await msg?.addReaction("👍");
-   console.log("6")
+    await msg?.addReaction("👍");
     await msg?.addReaction("👎");
-    console.log("7")
     await d.reply("done!")
-    console.log("8")
 })
 
 slash.handle("urban", async (d: slash.ApplicationCommandInteraction) => {
