@@ -29,6 +29,7 @@ slash.handle("suggest", async (d: slash.ApplicationCommandInteraction) => {
     await msg?.startThread({name: "discuss", autoArchiveDuration: 10080})
     await msg?.addReaction("👍");
     await msg?.addReaction("👎");
+    await d.reply("done!")
 })
 
 slash.handle("urban", async (d: slash.ApplicationCommandInteraction) => {
