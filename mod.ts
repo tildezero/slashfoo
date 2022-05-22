@@ -23,12 +23,10 @@ slash.handle("suggest", async (d: slash.ApplicationCommandInteraction) => {
         name: `${d.user.toString()} (${d.member?.nick})`,
         icon_url: d.user.avatarURL() 
     })
-    // const gd = await slash.client.client?.guilds.fetch("733508936216477706")
-    // const ch = await gd?.channels.get("735619559318487123")
     const msg = await slash.client.client?.channels.sendMessage("735619559318487123", {embeds: [em]})
-    await msg?.startThread({name: "discuss", autoArchiveDuration: 10080})
-    await msg?.addReaction("👍");
-    await msg?.addReaction("👎");
+//    await msg?.startThread({name: "discuss", autoArchiveDuration: 10080})
+//   await msg?.addReaction("👍");
+//    await msg?.addReaction("👎");
     await d.reply("done!")
 })
 
