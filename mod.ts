@@ -1,5 +1,5 @@
 import * as slash from "https://code.harmony.rocks/v2.6.0/deploy.ts"
-import { Client, Message } from "https://code.harmony.rocks/v2.6.0/mod.ts"
+import { Client, Message, GuildTextChannel } from "https://code.harmony.rocks/v2.6.0/mod.ts"
 import { commands } from "./commands.ts"
 
 slash.init({ env: true })
@@ -25,9 +25,10 @@ slash.handle("suggest", async (d: slash.ApplicationCommandInteraction) => {
         icon_url: d.user.avatarURL() 
     })
     const cl = new Client({token: Deno.env.get("TOKEN")})
-    const msg: Message = await cl.channels.sendMessage("735619559318487123", {embeds: [em]})
+    const ch = await cl.channels.resolve("735619559318487123")
+    const msg: Message = await (ch as GuildTextChannel).send({embeds: [em]})
     try {
-        await msg.startThread({name: "discuss", autoArchiveDuration: 10080})
+        await (ch as GuildTextChannel).startThread({name: "discuss", autoArchiveDuration: 10080}, msg)
         await msg.addReaction("👍");
         await msg.addReaction("👎");
         await d.reply("done!")
